@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <style>
+        .fun{
+            display: none;
+            width: 100%;
+            position: relative;
+        }
+
+        .fun img{
+            width: 100%;
+            height: 300px;
+        }
+
+        .hint{
+            position: relative;
+            margin-top: 200px;
+            bottom: 5px;
+            text-align: center;
+        }
+
+        .login{
+            text-align: center;
+            border: lightgray solid 2px;
+        }
+
+        .login input{
+            margin-left: 10px;
+        }
+
+        .input_div{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="fun">
+    <img src="../static/cb67d08abbff8caa6647b4428f280fed.jpeg" />
+</div>
+
+<div class="hint">
+<h1>
+    QZero小站登录系统
+</h1>
+</div>
+
+<div class="login">
+    <form action="/login/action" method="post">
+        <div class="input_div">
+            <label for="username">账号</label><input id="username" name="username" type="text" /><br />
+        </div>
+
+        <div class="input_div">
+            <label for="password">密码</label><input id="password" name="password" type="password" />
+        </div>
+
+        <div class="input_div">
+            <label>有效时间</label>
+            <input type="radio" id="choice_1_min" name="expired_time" value="60000" checked="checked" /><label for="choice_1_min">1分钟</label>
+            <input type="radio" id="choice_10_min" name="expired_time" value="600000" /><label for="choice_10_min">10分钟</label>
+            <input type="radio" id="choice_1_hour" name="expired_time" value="3600000" /><label for="choice_1_hour">1小时</label>
+            <input type="radio" id="choice_1_day" name="expired_time" value="86400000" /><label for="choice_1_day">1天</label>
+            <input type="radio" id="choice_permanent" name="expired_time" value="-1" /><label for="choice_permanent">永久</label>
+        </div>
+
+        <div class="input_div">
+            <button onclick="window.open('/register');return false;">注册</button> <input type="submit" value="登录" />
+        </div>
+    </form>
+</div>
+</body>
+</html>

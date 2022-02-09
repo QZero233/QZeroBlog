@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文章</title>
+    <link rel="stylesheet" href="../static/navigator.css" th:href="@{/navigator.css}" />
+    <link rel="stylesheet" href="../static/footer.css" th:href="@{/footer.css}" />
+    <style>
+        .navigator .jump .blog{
+            color: red;
+            border: #e8e8e8 solid 2px;
+            padding: 10px 5px;
+        }
+
+        .passage_title{
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navigator" th:replace="index :: navigator">
+    <img src="../static/navigator_logo.png" width="50" height="50" />
+
+    <div class="jump">
+        <a href="#">Test1</a>
+    </div>
+
+    <div class="dropdown_menu">
+        <span id="username">用户名</span>
+        <div class="dropdown_menu_content">
+            <a href="#">个人中心</a>
+            <a href="#">退出</a>
+        </div>
+    </div>
+</div>
+
+<div class="passage_title">
+    <h2>文章标题</h2>
+</div>
+
+<div class="interaction_bar">
+
+</div>
+
+<div class="content">
+
+</div>
+
+<div class="footer" th:replace="index :: footer">
+    QZero Blog | See more on <a target="_blank" href="https://github.com/QZero233/QZeroBlog">github</a><br />
+    All rights reserved
+</div>
+
+</body>
+</html>
