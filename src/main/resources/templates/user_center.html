@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <title>用户中心</title>
 
+    <link rel="stylesheet" href="../static/footer.css" th:href="@{/footer.css}" />
 
+    <style>
+        .header{
+            height: 50px;
+            border-bottom: #e8e8e8 solid 2px;
+            text-align: center;
+        }
+        .header span{
+            position: relative;
+            font-size: 30px;
+            color: #ff6600;
+        }
+
+        .side_menu{
+            border-right: black solid 3px;
+            width: 6em;
+        }
+        .side_menu a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            border: #eaeaea solid 2px;
+            padding: 10px;
+        }
+        .side_menu a:hover{
+            color:red;
+        }
+    </style>
 </head>
 <body>
+
+<div class="header">
+<span th:text="'用户'+${username}+'的个人中心'">用户xxx的个人中心</span>
+</div>
+
+<div class="side_menu">
+<a href="#">个人主页</a>
+<a href="#">文章管理</a>
+<a href="#">个人资料</a>
+<a href="#">退出</a>
+</div>
+
+<div class="footer" th:replace="index :: footer">
+    QZero 小站 | See more on <a target="_blank" href="https://github.com/QZero233/QZeroBlog">github</a> <br />
+    All rights reserved
+</div>
 
 </body>
 </html>

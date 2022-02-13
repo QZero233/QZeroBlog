@@ -17,11 +17,10 @@ public class ExceptionController{
     @ExceptionHandler
     public ModelAndView handleException(HttpServletRequest request,
                                         Throwable e){
-        log.error(e.getMessage(),e);
-
         ResponsiveException responsiveException=processException(e);
         ModelAndView modelAndView=new ModelAndView("error");
-        modelAndView.addObject("reason",responsiveException.getErrorMessage());
+        modelAndView.addObject("reason",ErrorCodeList.reasonMap.get(responsiveException.getErrorCode()));
+        modelAndView.addObject("detail",responsiveException.getErrorMessage());
 
         return modelAndView;
     }
@@ -36,7 +35,9 @@ public class ExceptionController{
         if(e instanceof ResponsiveException){
             return (ResponsiveException) e;
         }else{
-            return new ResponsiveException(ErrorCodeList.UNKNOWN_REASON,"未知原因引发的错误，详细信息为："+e.getMessage());
+            //Only print unknown error to log system
+            log.error(e.getMessage(),e);
+            return new ResponsiveException(ErrorCodeList.UNKNOWN_REASON,e.getMessage());
         }
     }
 }

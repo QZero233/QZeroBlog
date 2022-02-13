@@ -16,8 +16,10 @@
 <body>
 
 <div class="message">
-    <h1>出错啦</h1><br />
-    <h2 th:text="'原因：'+${reason}">原因：xxx</h2>
+    <h1>出错啦</h1>
+    <h3 th:if="${reason != null}" th:text="'原因：'+${reason}">原因：xxx</h3>
+    <h3 th:if="${detail != null}" th:text="'详细信息：'+${detail}">详细信息：xxx</h3>
+    <a href="#" onclick="window.history.back();">返回上一个页面</a>
 </div>
 
 <div class="footer" th:replace="index :: footer">

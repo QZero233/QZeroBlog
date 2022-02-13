@@ -58,4 +58,40 @@ public class AuthService {
         tokenRepository.deleteById(token.getTokenId());
     }
 
+    /**
+     * Check if the token is a valid one
+     * @param tokenId The token's id
+     * @throws ResponsiveException If it's not, exception thrown
+     */
+    public void checkTokenValidation(String tokenId) throws ResponsiveException {
+        if (!tokenRepository.existsById(tokenId)) {
+            throw new ResponsiveException(ErrorCodeList.INVALID_TOKEN, "Token does not exist");
+        }
+
+        Token token = tokenRepository.getById(tokenId);
+
+        //Check if expired
+        if (token.getExpiredTime() > 0 && token.getExpiredTime() < System.currentTimeMillis()) {
+            //Delete expired token
+            tokenRepository.delete(token);
+            throw new ResponsiveException(ErrorCodeList.INVALID_TOKEN, "Token is expired");
+        }
+
+        //Check pass
+        return;
+    }
+
+    /**
+     * Check token's validation and get it
+     * @param tokenId
+     * @return
+     * @throws ResponsiveException if token is not a valid one
+     */
+    public Token checkAndGetToken(String tokenId) throws ResponsiveException{
+        checkTokenValidation(tokenId);
+
+        Token token=tokenRepository.getById(tokenId);
+        return token;
+    }
+
 }

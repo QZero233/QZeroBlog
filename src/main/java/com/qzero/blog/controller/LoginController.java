@@ -44,11 +44,14 @@ public class LoginController {
                                     HttpServletResponse httpServletResponse) throws ResponsiveException {
         User user=new User(username, SHA256Utils.getHexEncodedSHA256(password),false,null,null);
         long expiredTime=System.currentTimeMillis()+expiredTimeDelta;
+        if(expiredTimeDelta<=0)
+            expiredTime=-1;
 
         Token token=authService.login(user,expiredTime);
 
         //Save to cookie
         Cookie cookie=new Cookie("token_id",token.getTokenId());
+        cookie.setPath("/");
         httpServletResponse.addCookie(cookie);
 
         //Go to user center
@@ -64,7 +67,10 @@ public class LoginController {
         }
 
         //Delete cookie
-        httpServletResponse.addCookie(new Cookie("token_id",null));
+        Cookie cookie=new Cookie("token_id",null);
+        cookie.setMaxAge(0);
+        //cookie.setPath("/");
+        httpServletResponse.addCookie(cookie);
 
         //Delete from db
         authService.logout(new Token(tokenIdStored,null,0));
