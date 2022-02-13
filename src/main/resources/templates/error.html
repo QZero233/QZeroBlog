@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>出错啦</title>
+
+    <link rel="stylesheet" href="../static/footer.css" th:href="@{/footer.css}" />
+    <style>
+        .message{
+            margin-top: 200px;
+            text-align: center;
+            border: lightgray solid 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="message">
+    <h1>出错啦</h1>
+    <h3 th:if="${reason != null}" th:text="'原因：'+${reason}">原因：xxx</h3>
+    <h3 th:if="${detail != null}" th:text="'详细信息：'+${detail}">详细信息：xxx</h3>
+    <a href="#" onclick="window.history.back();">返回上一个页面</a>
+</div>
+
+<div class="footer" th:replace="index :: footer">
+    QZero 小站 | See more on <a target="_blank" href="https://github.com/QZero233/QZeroBlog">github</a> <br />
+    All rights reserved
+</div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+/*Adjust the top banner*/
+.navigator{
+    /*box-shadow: 0 2px 1px -1px;*/
+    box-shadow: 0px 3px 6px #eaeaea;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.navigator .jump{
+    display: flex;
+    align-items: center;
+}
+
+.navigator img{
+    margin-right:20px;
+}
+
+/*The auth dropdown menu*/
+.navigator .dropdown_menu{
+    margin-top: 10px;
+    position: absolute;
+    right: 1%;
+}
+
+.navigator .dropdown_menu span{
+    margin-right: 70px;
+}
+
+.navigator .dropdown_menu_content{
+    display: none;
+    border: 1px darkgray solid;
+    margin-top: 25px;
+    padding: 5px;
+}
+
+.navigator .dropdown_menu span:hover{
+    color:red;
+}
+
+.navigator .dropdown_menu_content a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.navigator .dropdown_menu_content a:hover{
+    color: red;
+}
+
+.navigator .dropdown_menu:hover .dropdown_menu_content{
+    display: block;
+}
+
+.navigator .jump a{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.navigator .jump .current{
+    color: red;
+    border: #e8e8e8 solid 2px;
+    padding: 10px 5px;
+}
+
+/*The login link*/
+.navigator .login_link{
+    margin-top: 10px;
+    position: absolute;
+    right: 1%;
+}
+
+.navigator .login_link a{
+    color: black;
+    text-decoration: none;
+}
+
+.navigator .login_link a:hover{
+    color: red;
+}
+

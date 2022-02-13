@@ -1,0 +1,19 @@
+.footer{
+    border-top: #eaeaea solid 1px;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    bottom: 5px;
+
+}
+
+.footer a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer a:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>重定向中</title>
+
+    <script th:if="${target.message != null}" th:inline="javascript">
+        var msg=/*[[${target.message}]]*/ "msg";
+        alert(msg);
+    </script>
+
+    <script th:if="${target.targetUrl != null}" th:inline="javascript">
+        function sleep(ms) {
+            return new Promise(resolve =>
+                setTimeout(resolve, ms)
+            )
+        }
+
+        var url=/*[[${target.targetUrl}]]*/ "/";
+        sleep(1000).then(()=>{
+            window.location.href=url;
+        });
+    </script>
+
+    <script th:if="${target.targetUrl == null}">
+        function sleep(ms) {
+            return new Promise(resolve =>
+                setTimeout(resolve, ms)
+            )
+        }
+
+        alert("错误，无跳转地址，即将回到首页");
+        sleep(1000).then(()=>{
+            window.location.href="/";
+        });
+    </script>
+
+    <style>
+        .hint_div{
+            margin-top: 200px;
+            text-align: center;
+            border: lightgray solid 2px;
+        }
+
+        a{
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="hint_div">
+    <h1 th:text="${target.targetName==null?'正在跳转':('正在前往：'+target.targetName)}+'，请稍等'">正在前往：xxx，请稍等</h1>
+    <a href="/" th:href="${target.targetUrl}">若无响应请点击此手动跳转</a>
+</div>
+
+</body>
+</html>
